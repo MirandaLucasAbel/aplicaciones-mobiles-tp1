@@ -17,8 +17,8 @@ import { Card } from 'react-native-paper';
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [imagen, setImagen] = useState([]);
-  const [nombre, setNombre] = useState([]);
+  const [imagen, setImagen] = useState("");
+  const [nombre, setNombre] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [exp, setExp] = useState(0);
   const [nivel, setNivel] = useState(0);
@@ -82,13 +82,15 @@ export default function App() {
           ? json.sprites.versions['generation-v']['black-white'].animated
               .front_default
           : json.sprites.front_default;
-
+        
         setImagen(url);
+       // setImagen(json.sprites.front_default);
         saveValueFunction('name', json.name);
         saveValueFunction('img', url);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
+      console.log(imagen)
   };
 
   const subirExp = () => {
@@ -117,7 +119,8 @@ experiencia: ${exp}`}
 
       <Card>
         <TouchableOpacity activeOpacity={0.5} onPress={subirExp}>
-          <Image source={{ uri: imagen }} style={styles.imagen} />
+          
+           <Image source={{ uri: imagen }} style={styles.imagen} />
         </TouchableOpacity>
       </Card>
       <Button
@@ -149,6 +152,7 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     minWidthh: '100%',
     resizeMode: 'cover',
+    marginRight: 7
   },
   button: {
     fontWeight: 'bold',
