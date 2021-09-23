@@ -11,13 +11,13 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from 'react-native';
 import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [imagen, setImagen] = useState("");
+  const [imagen, setImagen] = useState(" ");
   const [nombre, setNombre] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [exp, setExp] = useState(0);
@@ -34,14 +34,27 @@ export default function App() {
     buscarPokemon();
   }, []);
 
-  const getValueFunction = (v, f) => {
-    AsyncStorage.getItem(v).then((value) => {
-      f(value);
-    });
+  const getValueFunction = async (v, f) => {
+    //AsyncStorage.getItem(v).then((value) => {
+     // f(value);
+   // });
+   try {
+    const value = await AsyncStorage.getItem(v);
+    f(value);
+  } catch (error) {
+    // Error retrieving data
+    console.log(error);
+  }
   };
 
-  const saveValueFunction = (k, v) => {
-    AsyncStorage.setItem(k, v);
+  const saveValueFunction = async (k, v) => {
+    //AsyncStorage.setItem(k, v);
+    try {
+    await AsyncStorage.setItem(k,v);
+    }
+    catch(error){
+      console.log(error);
+    }
   };
 
   const buscarPokemon = async () => {
@@ -149,8 +162,8 @@ const styles = StyleSheet.create({
   imagen: {
     height: 300,
     margin: 10,
-    minWidth: '100%',
-    minWidthh: '100%',
+   
+
     resizeMode: 'cover',
     marginRight: 7
   },
