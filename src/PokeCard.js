@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
   Image,
-  TextInput,
+  //TextInput,
   TouchableOpacity,
   Button,
   ActivityIndicator,
@@ -16,6 +16,7 @@ import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
 export default function PokeCard() {
+  
   const [data, setData] = useState([]);
   const [imagen, setImagen] = useState(" ");
   const [nombre, setNombre] = useState("");
@@ -131,7 +132,6 @@ experiencia: ${exp}`}
       </Card>
       <Card>
         <TouchableOpacity activeOpacity={0.5} onPress={subirExp}>
-          
            <Image source={{ uri: imagen }} style={styles.imagen} />
         </TouchableOpacity>
       </Card>
