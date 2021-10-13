@@ -16,13 +16,15 @@ import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
 export default function PokeCard() {
-  
+
   const [data, setData] = useState([]);
   const [imagen, setImagen] = useState(" ");
   const [nombre, setNombre] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [exp, setExp] = useState(0);
-  const [nivel, setNivel] = useState(0);
+  const [nivel, setNivel] = useState(1);
+
+  const API = 'https://pokeapi.co/api/v2/pokemon/';
 
   const generatePokeId = () => {
     let max = 898;
@@ -84,7 +86,7 @@ export default function PokeCard() {
     setLoading(true);
     reset();
     let pokeId = generatePokeId();
-    let url = `https://pokeapi.co/api/v2/pokemon/${pokeId}`;
+    let url = `${API}${pokeId}`;
     console.log(url);
     fetch(url)
       .then((response) => response.json())
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
+    //paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
@@ -161,15 +163,18 @@ const styles = StyleSheet.create({
   imagen: {
     height: 300,
     margin: 10,
-   
-
     resizeMode: 'cover',
     marginRight: 7
   },
   button: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    position: 'absolute',
+    flexDirection: 'row',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
     bottom: 0,
+
   },
+  
+  
 });
