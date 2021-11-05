@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
+import { initializeApp } from 'firebase/app';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import {
   Text,
   View,
@@ -15,7 +20,9 @@ import AsyncStorage from 'react-native';
 import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
-export default function PokeCard() {
+
+
+export default function PokeCard({ navigation }) {
 
   const [data, setData] = useState([]);
   const [imagen, setImagen] = useState(" ");
@@ -26,11 +33,9 @@ export default function PokeCard() {
 
   const API = 'https://pokeapi.co/api/v2/pokemon/';
 
-  const generatePokeId = () => {
-    let max = 898;
-    let min = 1;
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
+
+
+
 
   useEffect(() => {
     console.log("iniciando")
@@ -81,11 +86,18 @@ export default function PokeCard() {
     saveValueFunction('lvl', 1);
   };
 
+  const generatePokeId = () => {
+    let max = 898;
+    let min = 1;
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
   const nuevoPokemon = async () => {
     console.log("nuevo");
     setLoading(true);
     reset();
-    let pokeId = generatePokeId();
+    //let pokeId = generatePokeId();
+    let pokeId =   generatePokeId();
     let url = `${API}${pokeId}`;
     console.log(url);
     fetch(url)
@@ -100,7 +112,7 @@ export default function PokeCard() {
           : json.sprites.front_default;
         
         setImagen(url);
-       // setImagen(json.sprites.front_default);
+
         saveValueFunction('name', json.name);
         saveValueFunction('img', url);
       })
@@ -171,7 +183,7 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute', //Here is the trick
+    position: 'absolute', 
     bottom: 0,
 
   },
