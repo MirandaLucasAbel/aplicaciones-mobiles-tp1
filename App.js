@@ -29,16 +29,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   
   return (
-    /*
-    <View style={styles.container}>
-      <PokeCard></PokeCard>
-    </View>
-    */
+    
     <NavigationContainer>
     <Stack.Navigator initialRouteName="HomeComponent">
-      <Stack.Screen name="Home" component={HomeComponent} />
-      <Stack.Screen name="poke" component={PokeCard} />
-      <Stack.Screen name="about" component={AboutComponent} />
+        <Stack.Screen name="Home" component={HomeComponent} />
+        <Stack.Screen name="poke" component={PokeCard} />
+        <Stack.Screen name="about" component={AboutComponent} />
     </Stack.Navigator>
   </NavigationContainer>
   );

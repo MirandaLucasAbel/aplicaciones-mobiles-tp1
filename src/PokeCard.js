@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
-import { initializeApp } from 'firebase/app';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -20,6 +19,8 @@ import AsyncStorage from 'react-native';
 import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
+import MenuComponent from './MenuComponent';
+
 
 
 export default function PokeCard({ navigation }) {
@@ -32,10 +33,6 @@ export default function PokeCard({ navigation }) {
   const [nivel, setNivel] = useState(1);
 
   const API = 'https://pokeapi.co/api/v2/pokemon/';
-
-
-
-
 
   useEffect(() => {
     console.log("iniciando")
@@ -136,6 +133,7 @@ export default function PokeCard({ navigation }) {
 
   return (
     <View style={styles.container}>
+            <MenuComponent></MenuComponent>
       <Card>
         <ActivityIndicator size="large" animating={isLoading} />
         <Text style={styles.paragraph}>
