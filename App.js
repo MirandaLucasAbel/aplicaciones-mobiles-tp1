@@ -14,9 +14,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 
 
-import PokeCard from './src/PokeCard';
+import MenuComponent from './src/MenuComponent'
 import HomeComponent from './src/HomeComponent';
 import AboutComponent from './src/AboutComponent';
+import PokeCard               from './src/PokeCard'
+
+import { Fragment } from 'react';
 
 function HomeScreen() {
   return (
@@ -27,16 +30,18 @@ function HomeScreen() {
 }
 const Stack = createNativeStackNavigator();
 export default function App() {
-  
+
   return (
-    
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName="HomeComponent">
-        <Stack.Screen name="Home" component={HomeComponent} />
-        <Stack.Screen name="poke" component={PokeCard} />
-        <Stack.Screen name="about" component={AboutComponent} />
-    </Stack.Navigator>
-  </NavigationContainer>
+
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="HomeComponent">
+        <Stack.Screen
+          name="Root"
+          component={MenuComponent}
+          options={{ headerShown: false }}
+        />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
