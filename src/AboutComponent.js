@@ -8,7 +8,7 @@ export default function AboutComponent({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Sobre esta App</Text>
       <Text>App creada en react native con expo</Text>
-      <Text>https://github.com/MirandaLucasAbel/aplicaciones-moviles-tp1</Text>
+      <Text>MirandaLucasAbel/aplicaciones-moviles-tp1</Text>
     </View>
   );
 }

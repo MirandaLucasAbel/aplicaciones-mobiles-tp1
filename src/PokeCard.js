@@ -34,7 +34,9 @@ export default function PokeCard({ navigation }) {
 
 
 
-//deberia buscar el pokemon cuando inicia
+  useEffect(() => {
+    nuevoPokemon();
+  }, []) 
 
   const reset = async () => {
     setNivel(1);
