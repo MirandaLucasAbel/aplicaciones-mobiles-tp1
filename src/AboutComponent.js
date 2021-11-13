@@ -7,6 +7,7 @@ export default function AboutComponent({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Sobre esta App</Text>
+      <Text>tap para subir de nivel</Text>
       <Text>App creada en react native con expo</Text>
       <Text>MirandaLucasAbel/aplicaciones-moviles-tp1</Text>
     </View>
